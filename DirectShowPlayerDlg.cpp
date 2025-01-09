@@ -76,6 +76,7 @@ BEGIN_MESSAGE_MAP(CDirectShowPlayerDlg, CDialogEx)
 	ON_WM_HSCROLL()
 	ON_BN_CLICKED(IDC_FULLSCR, &CDirectShowPlayerDlg::OnBnClickedFullscr)
 	ON_WM_LBUTTONDOWN()
+	ON_BN_CLICKED(IDC_OPEN, &CDirectShowPlayerDlg::OnBnClickedOpen)
 END_MESSAGE_MAP()
 
 
@@ -216,6 +217,28 @@ void CDirectShowPlayerDlg::OnLButtonDown(UINT nFlags, CPoint point)
 	CDialogEx::OnLButtonDown(nFlags, point);
 }
 
+
+void CDirectShowPlayerDlg::OnBnClickedOpen()
+{
+	// Filter für unterstützte Dateitypen (nur MP4 und alle Dateien)
+	CString filter = L"Video Files (.mp4;.mpg)|.mp4;.mpg|All Files (.)|.||";
+
+	// Datei-Dialog initialisieren
+	CFileDialog fileDialog(TRUE, L"mp4", NULL, OFN_HIDEREADONLY | OFN_FILEMUSTEXIST, filter, this);
+
+	// Zeige den Dialog an und überprüfe, ob der Benutzer eine Datei ausgewählt hat
+	if (fileDialog.DoModal() == IDOK) {
+		// Hole den Pfad der ausgewählten Datei
+		CString selectedFile = fileDialog.GetPathName();
+		m_DirectShow.SetFileName(selectedFile);
+
+		// Bereinige vorherige Medienressourcen
+		m_DirectShow.CleanUp();
+		//Video abstpielen
+		OnBnClickedPlay();
+	}
+}
+
 LRESULT CDirectShowPlayerDlg::GetIt(WPARAM wparam, LPARAM lparam) {
 	/*long evCode;
 	LONG_PTR param1, param2;
@@ -265,6 +288,3 @@ void CDirectShowPlayerDlg::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrol
 	}	
 	CDialogEx::OnHScroll(nSBCode, nPos, pScrollBar);
 }
-
-
-

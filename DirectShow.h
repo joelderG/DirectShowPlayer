@@ -14,9 +14,10 @@ public:
 	void CleanUp();
 	void SetFullScreen(bool enable);
 	void SetVideoWindowPosition(int x, int y, int width, int height);
+	void SetFileName(CString selectedFile);
 
 	LRESULT GetIt();
-
+	CString FileName;
 	IMediaEventEx* pEvent;
 	IMediaSeeking* pSeek;
 	IVideoWindow* pVidWin;

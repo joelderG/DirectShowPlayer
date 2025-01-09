@@ -133,3 +133,7 @@ void DirectShow::SetVideoWindowPosition(int x, int y, int width, int height) {
 		pVidWin->SetWindowPosition(x, y, width, height);
 	}
 }
+
+void DirectShow::SetFileName(CString selectedFile) {
+	FileName = selectedFile;
+}
