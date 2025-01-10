@@ -178,7 +178,8 @@ HCURSOR CDirectShowPlayerDlg::OnQueryDragIcon()
 
 void CDirectShowPlayerDlg::OnBnClickedPlay()
 {
-	m_DirectShow.Play(L"example.mpg");
+	/*m_DirectShow.Play(L"example.mpg");*/
+	m_DirectShow.Play(m_DirectShow.FileName);
 	m_DirectShow.pVidWin->put_Owner((OAHWND)GetSafeHwnd());
 }
 
@@ -221,7 +222,7 @@ void CDirectShowPlayerDlg::OnLButtonDown(UINT nFlags, CPoint point)
 void CDirectShowPlayerDlg::OnBnClickedOpen()
 {
 	// Filter für unterstützte Dateitypen (nur MP4 und alle Dateien)
-	CString filter = L"Video Files (.mp4;.mpg)|.mp4;.mpg|All Files (.)|.||";
+	CString filter = L"Video Files (*.mp4;*.mpg)|*.mp4;*.mpg|All Files (*.*)|*.*||";
 
 	// Datei-Dialog initialisieren
 	CFileDialog fileDialog(TRUE, L"mp4", NULL, OFN_HIDEREADONLY | OFN_FILEMUSTEXIST, filter, this);

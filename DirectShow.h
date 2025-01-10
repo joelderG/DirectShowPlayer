@@ -16,10 +16,10 @@ public:
 	void CleanUp();
 	void SetFullScreen(bool enable);
 	void SetVideoWindowPosition(int x, int y, int width, int height);
-	void setFilename(CString selectedFile);
+	void SetFileName(CString selectedFile);
 
 	LRESULT GetIt();
-	CString FileName;
+	CString FileName = _T("example.mpg");
 	IMediaEventEx* pEvent;
 	IMediaSeeking* pSeek;
 	IVideoWindow* pVidWin;
