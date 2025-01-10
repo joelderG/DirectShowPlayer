@@ -1,4 +1,6 @@
 #pragma once
+#include "atlstr.h"
+
 class DirectShow
 {
 public: 
@@ -14,15 +16,16 @@ public:
 	void CleanUp();
 	void SetFullScreen(bool enable);
 	void SetVideoWindowPosition(int x, int y, int width, int height);
+	void setFilename(CString selectedFile);
 
 	LRESULT GetIt();
-
-	IMediaEventEx* pEvent;	// COM-Interface / Behandlung der Ereignisse 
-	IMediaSeeking* pSeek;	// Slidercontroll und Zeitsteuerung
-	IVideoWindow* pVidWin;	// Interface zur Steuerung des Videofensters
+	CString FileName;
+	IMediaEventEx* pEvent;
+	IMediaSeeking* pSeek;
+	IVideoWindow* pVidWin;
 private:
-	IGraphBuilder* pGraph;	// COM-Interface / Aufbau des Filtergraphen
-	IMediaControl* pMediaControl;	// COM-Interface / Interface zur Steuerung des Graphen
+	IGraphBuilder* pGraph;
+	IMediaControl* pMediaControl;
 	REFERENCE_TIME rtTotal;
 };
 
