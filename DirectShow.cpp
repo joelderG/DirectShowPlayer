@@ -26,7 +26,7 @@ void DirectShow::Play(const wchar_t* filename) {
 	pGraph->QueryInterface(IID_IMediaControl, (void**)&pMediaControl);
 	pGraph->QueryInterface(IID_IMediaEventEx, (void**)&pEvent);
 
-	pGraph->RenderFile(filename, NULL);
+	pGraph->RenderFile(filename, NULL); // Filtergraph wird aufgebaut
 
 	pGraph->QueryInterface(IID_IVideoWindow, (void**)&pVidWin);
 	pGraph->QueryInterface(IID_IMediaSeeking, (void**)&pSeek);

@@ -17,12 +17,12 @@ public:
 
 	LRESULT GetIt();
 
-	IMediaEventEx* pEvent;
-	IMediaSeeking* pSeek;
-	IVideoWindow* pVidWin;
+	IMediaEventEx* pEvent;	// COM-Interface / Behandlung der Ereignisse 
+	IMediaSeeking* pSeek;	// Slidercontroll und Zeitsteuerung
+	IVideoWindow* pVidWin;	// Interface zur Steuerung des Videofensters
 private:
-	IGraphBuilder* pGraph;
-	IMediaControl* pMediaControl;
+	IGraphBuilder* pGraph;	// COM-Interface / Aufbau des Filtergraphen
+	IMediaControl* pMediaControl;	// COM-Interface / Interface zur Steuerung des Graphen
 	REFERENCE_TIME rtTotal;
 };
 
